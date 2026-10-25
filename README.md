@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-Digital Forensics Suite
+OBiopsy is a digital forensics and intelligence suite for triaging files and artifacts with no external dependencies. It computes hashes, identifies file types by magic bytes, measures entropy, extracts strings and network artifacts, and compares hashes against IOCs or IOC lists. A subcommand interface makes each capability scriptable, and findings can be exported as a full JSON report.
 
 ---
 
 ## ✨ Features
 
-- OBiopsy v2.1.0 — Digital forensics: browser artifacts, hashes, entropy, PE/ELF, archives, IOC
+- File hashing (MD5/SHA1/SHA256, optional SHA512/BLAKE2b)
+- Magic-byte file-type identification and Shannon entropy
+- Printable-string extraction with length filter and grep
+- IOC hash comparison against a single hash or a hash list
+- YARA-style pattern scanning and network-artifact extraction
+- Directory batch scanning (JSON lines) and full JSON report export
 
 ---
 
@@ -38,7 +43,10 @@ Digital Forensics Suite
 ## 🚀 Usage
 
 ```bash
-./OBiopsy
+./OBiopsy hash suspicious.bin --extra
+./OBiopsy strings malware.exe -n 10 --grep http
+./OBiopsy batch ./evidence/ --max 500
+./OBiopsy --help
 ```
 
 ---
